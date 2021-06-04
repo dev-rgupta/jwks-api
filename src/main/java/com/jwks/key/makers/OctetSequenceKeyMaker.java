@@ -12,7 +12,8 @@ import com.nimbusds.jose.jwk.OctetSequenceKey;
 import com.nimbusds.jose.util.Base64URL;
 
 /**
- * @author jricher
+ * @author Ratnesh
+ *
  */
 public class OctetSequenceKeyMaker {
 

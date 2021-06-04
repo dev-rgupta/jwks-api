@@ -18,7 +18,8 @@ import com.nimbusds.jose.jwk.ECKey;
 import com.nimbusds.jose.jwk.KeyUse;
 
 /**
- * @author jricher
+ * @author Ratnesh
+ *
  */
 public class ECKeyMaker {
 

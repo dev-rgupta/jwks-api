@@ -12,7 +12,7 @@ import com.nimbusds.jose.util.Base64;
 import com.nimbusds.jose.util.Base64URL;
 
 /**
- * @author jricher
+ * @author Ratnesh
  *
  */
 // KeyID generator functions

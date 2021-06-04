@@ -15,7 +15,8 @@ import com.nimbusds.jose.jwk.KeyUse;
 import com.nimbusds.jose.jwk.RSAKey;
 
 /**
- * @author jricher
+ * @author Ratnesh
+ *
  */
 public class RSAKeyMaker {
 

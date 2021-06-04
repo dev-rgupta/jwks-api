@@ -17,14 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/jwsk")
 public class JWKSController {
-
 	@Autowired
 	private JWKSService postService;
-	@RequestMapping(value="/{keyType}/{size}",method = RequestMethod.GET, produces = {"application/json"})
-	//@GetMapping(name = "/{keyType}/{size}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Object getJWKS(@PathVariable String keyType, @PathVariable String size, @RequestParam("alg") String alg)
-			throws Exception {
-		return postService.getJWKSByKeyType(keyType, size, alg);
+
+	@RequestMapping(value = "/{keyType}", method = RequestMethod.GET, produces = { "application/json" })
+	public Object getJWKS(@PathVariable String keyType, 
+			@RequestParam(name = "alg", required = false) String alg,
+			@RequestParam(name = "size", required = false) String size,
+			@RequestParam(name = "crv", required = false) String crv,
+			@RequestParam(name = "use", required = false) String use) throws Exception {
+		return postService.getJWKSByKeyType(keyType, size, alg, crv, use);
 	}
 
 }

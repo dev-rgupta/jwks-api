@@ -8,13 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.jwks.key.makers.RSAKeyMaker;
 import com.jwks.model.KeysList;
 import com.jwks.utils.KeyIdGenerator;
@@ -49,7 +50,7 @@ public class JWKSService {
 
 			JWK jwk = makeKey(size, generator, null, keyType, null, keyAlg);
 			// round trip it through GSON to get a prettyprinter
-		//	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 		//	String res =	printKey(jwk, gson);
 
@@ -61,21 +62,16 @@ public class JWKSService {
 			keysList.add(jwk);		
 			keys.setKeys(keysList);
 			/* ------------------------------------- */
-			//JSONArray array = new JSONArray(keys.getKeys().toString()); 
 			Map<String, Object> mapParam = new HashMap<>();
-			mapParam.put("keys", keys.getKeys().toString());
+			mapParam.put("keys", keys.getKeys());
 			System.out.println("keyList::::"+ keys.getKeys().toString());
+			
+			JsonElement json = JsonParser.parseString(mapParam.toString());
+			
+			String jsonString = gson.toJson(json);
 			System.out.println("mapParam::::"+ mapParam.toString());
-			//JSONObject obj = new JSONObject(mapParam);
 			
-			// Construct a JSONObject from a Map.
-		//	JSONObject crunchifyObject = new JSONObject(mapParam);
-			String jsonString = objectMapper.writeValueAsString(mapParam);
-			
-			// json = JsonParser.parseString(jwk.toJSONString());
-			// pubJson = JsonParser.parseString(jwk.toPublicJWK().toJSONString());
-			JsonNode  jsonNode = objectMapper.readTree(jsonString);
-			return  jsonNode;
+			return  jsonString;
 		} catch (Exception e) {
 			throw new Exception("Invalid key size: " + e.getMessage());
 		}

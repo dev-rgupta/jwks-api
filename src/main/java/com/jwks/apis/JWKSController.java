@@ -4,9 +4,9 @@
 package com.jwks.apis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +20,11 @@ public class JWKSController {
 
 	@Autowired
 	private JWKSService postService;
-
-	@GetMapping("/{keyType}/{size}") //alg ,
-	public Object getJWKS(@PathVariable String keyType,@PathVariable String size,@RequestParam("alg") String alg) throws Exception {
-		return postService.getJWKSByKeyType(keyType,size, alg);
+	@RequestMapping(value="/{keyType}/{size}",method = RequestMethod.GET, produces = {"application/json"})
+	//@GetMapping(name = "/{keyType}/{size}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public Object getJWKS(@PathVariable String keyType, @PathVariable String size, @RequestParam("alg") String alg)
+			throws Exception {
+		return postService.getJWKSByKeyType(keyType, size, alg);
 	}
 
 }

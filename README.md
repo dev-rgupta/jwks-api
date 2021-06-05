@@ -55,8 +55,11 @@ usage: java -jar json-web-key-generator.jar -t <keyType> [options]
 ```
 
 ## How we set up this
+
 step 1: First you have to clone this repo as maven project. its a maven based Springboot application
+
 step 2: Start the springboot application (default: http://localhost:8080)
+
 step 3: hit the end point with required parameters i.e. http://localhost:8080/jwsk/{keyType}?alg={algorithem}&size=2048
 
  ## Sample Url's and Output

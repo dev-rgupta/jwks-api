@@ -57,8 +57,48 @@ usage: java -jar json-web-key-generator.jar -t <keyType> [options]
 ## How we set up this
 step 1: First you have to clone this repo as maven project. its a maven based Springboot application
 step 2: Start the springboot application (default: http://localhost:8080)
-step 3: hit the end point with required parameters i.e. http://localhost:8080/jwsk/{keyType}/{size}?alg={algorithem}
-Sample Url http://localhost:8080/jwsk/RSA/2048?alg=RS256 for RSA 
+step 3: hit the end point with required parameters i.e. http://localhost:8080/jwsk/{keyType}?alg={algorithem}&size=2048
+
+ ## Sample Url's and Output
+ 1: http://localhost:8080/jwsk/RSA?alg=RS256&size=2048 for RSA 
+  
+  ```
+  {
+    "keys": [
+        {
+            "p": "zIHD_Gobc5-AU4vRwrzMpd5esHLzpqwhc403_piJGkuvEluYwoAWvJ4r46wAdOXrmBqdsxWqgUMhjkFP1Tcofj6PFIZ21x-fnmeDlcTL2Lif4eySQ8R7wq3wTSIIaMMckVAtb-K6Kx7MCKbq3LZKacSdCbS1GGP0bK0lKIVg080",
+            "kty": "RSA",
+            "q": "xOEHhtV0BN7jgEeF1J2Th9lsMvoqDvsrumA7G-0uq-L-4KnC1NCB6XH9tS6fFoatdof81A8DYjqsEPMySQ9PFLW9T466a0p0c6HL6lVWzkyrQY4yThKCNuWx6XfKEtKNO30h1vY0Ba8GIJjfL4FJdNnH2YsMfum1VU9eIODyEEU",
+            "d": "NKoQupUoNYaKUYxG-rb5eEzWUQzF2Tdf0lZsi4jGxvCTa1qb39u0pgdqMEaXzg2BrXSyntA0-fZc80HMr2N5A2vfV-OYVbRetDanLrsrv_IbrfFUdUZEIKn4K08kfRTI4znZO5tboIwbcGLXkp00sNQvw4CuDPKBkqjF2x9VEkvxzv59LElgWjLDZ-A5F1Wa-I2suNjQWOyOm6mcllEuv3TXeYG902ylNsfjfTwYbQ7LEdkKu-z0H_wiwLjjQIQES-aF4Ga71HqZHEj1sKiuHqNBks9OH_Ab2BZm94Di3QzztUd5qW70wrQJ39f6e7NaXHGRIG29RZON231Rii-EsQ",
+            "e": "AQAB",
+            "kid": "1622906406",
+            "qi": "RtWFB05arYaxyLjZKu3r3LqvWWv_vCpQM6Slkrco_pqmwVL2GBz6zhlAjFxDBW7ChRVCNFckqOUJ9L9xR0pV_ngD8qYoAPjRoRNXwnVswkZcnflrj_maxxf1MNq0z0oogeLKr_j7_eAbCcSJF9_OkNJy0M24Ijyby09Eb-kY4xI",
+            "dp": "GdWew4lH9IBGvscf9YDSPXXs8k9jNj_ybd1-IFx2nWrIMAKANrnlpWg51SYKXLoa2_koyNHI21F2sLjRc_bm16PhgU9HPf_RszoSZl4Y_kS8ddbj10m_9KTygVv2Qf274yOEyeiTahUW41TqwH0Kw3fB-tLoOa-O1he9ZPQMelU",
+            "alg": "RS256",
+            "dq": "dM1QatT-NNmLPRKxulcWLLV4NLIn-6VV5weqacIIO1-7eMweU6W0PSwsqa4UIggap0S8YY7aog9O_-tYfPHBJ_c-bhGuVXLhraxizw58Jn5j58uV2q2uZSVWrL0tvIb_1ThCuEZuzKRuzS4E0ykvzExb_Zs5-Z1rwEYLARSTZ8U",
+            "n": "nUceHcTjam7v9f94M5Wcz6xdiGrvy-SHMznoA-NsT6UJUedsY84ruCQed3zJfpkSaGM0XGCWjqlk5AXs592pT-5M92PfBmmf3AoSbKIuBZkJInvAqcndbyl1FBd3-4kI2rDI5bl2FsqVWQvXDDMWPx7orU7pfitO-kC_64d5WihScCHT76V0u4HKo_zJT7K9NK32CfEmR_g8u9C76gDz6DELspTrWu_7-RnXEVRnK2bcpOop4IOREuFJcz3FBuqbCZv1eyUDaU1DAcOGg4Cyg9J8CImffcbgRsW5SeZjb62coEVuK7pW8kACrntSJe_7OGDStRAtngxZIxq9mB_mQQ"
+        }
+    ]
+}
+```
+  
+ 2: http://localhost:8080/jwsk/EC?crv=P-256&use=enc    for EC
+  
+  ```
+  {
+    "keys": [
+        {
+            "kty": "EC",
+            "d": "I8ngmZ034UmtH2eDKKHhEDIjYHnxxLueT1XoBonnjSg",
+            "use": "enc",
+            "crv": "P-256",
+            "kid": "enc-1622906241",
+            "x": "xbB6OvGMDHzn0wC9u-IzelSh3mhmJle9UAQJA8yPvm8",
+            "y": "CecMRlJc4VkaIqegQYRFmIUrhVBoZKdHWMPbFksy5dw"
+        }
+    ]
+}
+```
 
 Thats It !!!
 
